@@ -171,7 +171,7 @@ void fan_UARTCtrl()
 			}
 			fan_normal();  // 새로운 모드로 팬 동작 시작
 		}
-		else if (!strcmp((const char *)rxString, "ON_MIN+\n"))  // 'ON_MIN+' 명령 수신 시 ON 상태에서 타이머 분 증가
+		else if (!strcmp((const char *)rxString, "ON_MIN+\n"))
 		{
 			fan_buzzer();
 			
@@ -181,7 +181,7 @@ void fan_UARTCtrl()
 			sprintf(buff, "ON Timer: %02d:%02d", on_min, on_sec);
 			LCD_writeStringXY(0, 0, buff);
 		}
-		else if (!strcmp((const char *)rxString, "ON_SEC+\n"))  // 'ON_SEC+' 명령 수신 시 ON 상태에서 타이머 초 증가
+		else if (!strcmp((const char *)rxString, "ON_SEC+\n"))
 		{
 			fan_buzzer();
 			
@@ -192,7 +192,7 @@ void fan_UARTCtrl()
 			LCD_writeStringXY(0, 0, buff);
 			
 		}
-		else if (!strcmp((const char *)rxString, "OFF_MIN+\n"))  // 'OFF_MIN+' 명령 수신 시 OFF 상태에서 타이머 분 증가
+		else if (!strcmp((const char *)rxString, "OFF_MIN+\n"))
 		{
 			fan_buzzer();
 			
@@ -202,17 +202,17 @@ void fan_UARTCtrl()
 			sprintf(buff, "OFF Timer: %02d:%02d", off_min, off_sec);
 			LCD_writeStringXY(0, 0, buff);
 		}
-		else if (!strcmp((const char *)rxString, "OFF_SEC+\n"))  // 'OFF_SEC+' 명령 수신 시 OFF 상태에서 타이머 초 증가
+		else if (!strcmp((const char *)rxString, "OFF_SEC+\n"))
 		{
 			fan_buzzer();
 			
-			off_sec = (off_sec + 1) % 60;  // OFF 상태 타이머 초 증가
+			off_sec = (off_sec + 1) % 60;
 			
 			LCD_displayClear();
 			sprintf(buff, "OFF Timer: %02d:%02d", off_min, off_sec);
 			LCD_writeStringXY(0, 0, buff);
 		}
-		else if (!strcmp((const char *)rxString, "Clock_Set\n"))  // 'Clock_Set' 명령 수신 시 카운트다운 시작
+		else if (!strcmp((const char *)rxString, "Clock_Set\n"))
 		{
 			Timer_reset();
 			
@@ -222,7 +222,6 @@ void fan_UARTCtrl()
 			sprintf(buff, "Countdown Started");
 			LCD_writeStringXY(0, 0, buff);
 			LCD_writeStringXY(1, 0, "Timing...");
-			// 추가적으로 카운트다운 시작 로직을 여기에 작성
 		}
 	}
 	
